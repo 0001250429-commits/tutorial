@@ -1,0 +1,48 @@
+using System;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+class Program
+{
+    static void Main(string[] args)
+    {
+        double total = 0;
+        Console.WriteLine("-----CUPOM FISCAL-----");
+        Console.WriteLine("QUANTIDADE DE PRODUTOS:");
+        int quant = int.Parse(Console.ReadLine());
+        List< string >nomep = new List<string>();
+        for (int i = 0; i < quant; i++)
+        {
+            Console.WriteLine("DIGITE O NOME DO PRODUTO");
+            string nome = Console.ReadLine();
+            nomep.Add(nome);
+
+            Console.WriteLine("DIGITE O PREÇO");
+            double preco = double.Parse(Console.ReadLine());
+            total += preco;
+        }
+
+        Console.WriteLine("DIGITE A PORCENTAGEM DO DO DESCONTO");
+        double desc = double.Parse(Console.ReadLine());
+
+        double resultdesc = total * (desc / 100);
+
+        double precoFinal = total - resultdesc;
+
+        DateTime hora = DateTime.Now;
+
+        Console.WriteLine("----------------------------------------");
+        foreach (string s in nomep)
+        {
+            Console.WriteLine($"Produto: {s}");
+        }
+        Console.WriteLine($"Preço original: R$ {total:F2}");
+        Console.WriteLine($"Desconto: {desc}%");
+        Console.WriteLine($"Valor do desconto: R$ {resultdesc:F2}" );
+        Console.WriteLine($"Preço com desconto: R$ {precoFinal:F2}");
+        Console.WriteLine("#Horario da compra: " + hora);
+        Console.WriteLine("----------------------------------------");
+        Console.WriteLine("Obrigado por comprar conosco!");
+        Console.WriteLine("************* FIM DO CUPOM *************");
+
+    }
+
+}
